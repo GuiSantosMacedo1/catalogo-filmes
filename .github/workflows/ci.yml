@@ -20,6 +20,28 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Gerar arquivos de environment a partir do Secret
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: |
+          mkdir -p src/environments
+          cat > src/environments/environment.ts << EOF
+          export const environment = {
+            production: true,
+            tmdbApiKey: '${TMDB_API_KEY}',
+            tmdbBaseUrl: 'https://api.themoviedb.org/3',
+            tmdbImageUrl: 'https://image.tmdb.org/t/p/w500'
+          };
+          EOF
+          cat > src/environments/environment.development.ts << EOF
+          export const environment = {
+            production: false,
+            tmdbApiKey: '${TMDB_API_KEY}',
+            tmdbBaseUrl: 'https://api.themoviedb.org/3',
+            tmdbImageUrl: 'https://image.tmdb.org/t/p/w500'
+          };
+          EOF
+
       - name: Instalar dependencias
         run: npm install
 
