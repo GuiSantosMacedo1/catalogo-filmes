@@ -1,0 +1,46 @@
+<div class="detail-container">
+  <button class="back-button" (click)="goBack()">← Voltar</button>
+
+  <!-- Loading -->
+  <div class="state-message" *ngIf="loading">
+    <p>Carregando detalhes...</p>
+  </div>
+
+  <!-- Erro -->
+  <div class="state-message state-error" *ngIf="error && !loading">
+    <p>Não foi possível carregar este filme. Tente novamente mais tarde.</p>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="movie-detail" *ngIf="movie && !loading && !error">
+    <div class="detail-poster">
+      <img [src]="posterUrl" [alt]="movie.title" />
+    </div>
+
+    <div class="detail-info">
+      <h1>{{ movie.title }}</h1>
+
+      <div class="detail-meta">
+        <span class="rating">★ {{ movie.vote_average.toFixed(1) }}</span>
+        <span>{{ movie.release_date | slice:0:4 }}</span>
+        <span *ngIf="movie.runtime">{{ movie.runtime }} min</span>
+      </div>
+
+      <div class="genres" *ngIf="movie.genres.length">
+        <span class="genre-tag" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+      </div>
+
+      <h3>Sinopse</h3>
+      <p class="overview">{{ movie.overview || 'Sinopse não disponível.' }}</p>
+
+      <div class="cast" *ngIf="movie.credits?.cast?.length">
+        <h3>Elenco principal</h3>
+        <div class="cast-list">
+          <span class="cast-member" *ngFor="let actor of movie.credits!.cast.slice(0, 6)">
+            {{ actor.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
