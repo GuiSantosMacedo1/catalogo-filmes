@@ -23,7 +23,6 @@ Projeto desenvolvido como desafio técnico para vaga de desenvolvedor front-end.
 
 ## 🗂️ Estrutura de pastas
 
-\```
 src/app/
 ├── core/
 │   └── services/
@@ -36,22 +35,21 @@ src/app/
 │   └── movie-detail/              → tela de detalhe
 └── models/
     └── movie.model.ts             → tipagem dos dados da API
-\```
 
 ## ⚙️ Como rodar o projeto localmente
 
 ### 1. Clone o repositório
 
-\```bash
+bash
 git clone https://github.com/GuiSantosMacedo1/catalogo-filmes.git
 cd catalogo-filmes
-\```
+
 
 ### 2. Instale as dependências
 
-\```bash
+bash
 npm install
-\```
+
 
 ### 3. Configure a API Key do TMDB
 
@@ -59,9 +57,9 @@ Crie uma conta gratuita em [themoviedb.org](https://www.themoviedb.org/) e gere 
 
 Copie o arquivo de exemplo:
 
-\```bash
+bash
 cp src/environments/environment.example.ts src/environments/environment.development.ts
-\```
+
 
 Edite o arquivo `environment.development.ts` e insira sua chave:
 
