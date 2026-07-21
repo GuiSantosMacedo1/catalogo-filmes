@@ -1,27 +1,104 @@
-# CatalogoFilmes
+# 🎬 Catálogo de Filmes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Aplicação front-end em Angular que consome a API do [TMDB](https://www.themoviedb.org/) para listar filmes populares, permitir busca por título e exibir detalhes (sinopse, elenco, gêneros e avaliação).
 
-## Development server
+Projeto desenvolvido como desafio técnico para vaga de desenvolvedor front-end.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologias
 
-## Code scaffolding
+- Angular 18 (standalone components)
+- TypeScript
+- RxJS (Observables, debounceTime, distinctUntilChanged)
+- Jasmine + Karma (testes unitários)
+- API TMDB (The Movie Database)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 📋 Funcionalidades
 
-## Build
+- Listagem de filmes populares
+- Busca por título com debounce (evita chamadas excessivas à API)
+- Tratamento de estados de **loading**, **erro** e **vazio**
+- Tela de detalhe com sinopse, gêneros, duração e elenco principal
+- Layout responsivo (desktop e mobile)
+- Componente reutilizável (`MovieCardComponent`)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🗂️ Estrutura de pastas
 
-## Running unit tests
+\```
+src/app/
+├── core/
+│   └── services/
+│       └── movie.service.ts       → chamadas à API TMDB
+├── shared/
+│   └── components/
+│       └── movie-card/            → componente reutilizável
+├── features/
+│   ├── home/                      → listagem + busca
+│   └── movie-detail/              → tela de detalhe
+└── models/
+    └── movie.model.ts             → tipagem dos dados da API
+\```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## ⚙️ Como rodar o projeto localmente
 
-## Running end-to-end tests
+### 1. Clone o repositório
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+\```bash
+git clone https://github.com/GuiSantosMacedo1/catalogo-filmes.git
+cd catalogo-filmes
+\```
 
-## Further help
+### 2. Instale as dependências
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+\```bash
+npm install
+\```
+
+### 3. Configure a API Key do TMDB
+
+Crie uma conta gratuita em [themoviedb.org](https://www.themoviedb.org/) e gere uma API Key em **Configurações → API**.
+
+Copie o arquivo de exemplo:
+
+\```bash
+cp src/environments/environment.example.ts src/environments/environment.development.ts
+\```
+
+Edite o arquivo `environment.development.ts` e insira sua chave:
+
+\```typescript
+export const environment = {
+  production: false,
+  tmdbApiKey: 'SUA_CHAVE_AQUI',
+  tmdbBaseUrl: 'https://api.themoviedb.org/3',
+  tmdbImageUrl: 'https://image.tmdb.org/t/p/w500'
+};
+\```
+
+### 4. Rode o projeto
+
+\```bash
+ng serve
+\```
+
+Acesse `http://localhost:4200`.
+
+### 5. Rodando os testes
+
+\```bash
+ng test
+\```
+
+## 🔒 Nota sobre segurança
+
+A API Key do TMDB (v3) é projetada para uso client-side, mas mesmo assim os arquivos `environment.ts` e `environment.development.ts` estão no `.gitignore` para não expor a chave real no repositório. O arquivo `environment.example.ts` documenta a estrutura esperada.
+
+## 🧠 Decisões técnicas
+
+- **Separação por feature** (`home`, `movie-detail`) + **shared** (componentes reutilizáveis) + **core** (services): facilita escalabilidade e deixa claro onde adicionar novas telas ou lógica compartilhada.
+- **RxJS com debounceTime/distinctUntilChanged** na busca: evita disparar uma requisição a cada tecla digitada, melhorando performance e reduzindo uso da API.
+- **Componentes standalone**: seguindo a direção mais recente do Angular, sem depender de NgModules.
+- **Testes com mocks (jasmine.createSpyObj, HttpClientTestingModule)**: garante testes unitários isolados, sem depender da API real estar disponível.
+
+## 👤 Autor
+
+Guilherme Santos Macedo — [LinkedIn](#) | [GitHub](https://github.com/GuiSantosMacedo1)
