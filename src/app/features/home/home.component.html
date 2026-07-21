@@ -10,22 +10,18 @@
     />
   </header>
 
-  <!-- Loading -->
   <div class="state-message" *ngIf="loading">
     <p>Carregando filmes...</p>
   </div>
 
-  <!-- Erro -->
   <div class="state-message state-error" *ngIf="error && !loading">
     <p>Não foi possível carregar os filmes. Tente novamente mais tarde.</p>
   </div>
 
-  <!-- Vazio -->
   <div class="state-message" *ngIf="!loading && !error && movies.length === 0">
     <p>Nenhum filme encontrado para "{{ searchTerm }}".</p>
   </div>
 
-  <!-- Lista de filmes -->
   <div class="movie-grid" *ngIf="!loading && !error && movies.length > 0">
     <app-movie-card
       *ngFor="let movie of movies"
