@@ -1,55 +1,78 @@
 # 🎬 Catálogo de Filmes
 
-Aplicação front-end em Angular que consome a API do [TMDB](https://www.themoviedb.org/) para listar filmes populares, permitir busca por título e exibir detalhes (sinopse, elenco, gêneros e avaliação).
+Aplicação **front-end desenvolvida em Angular** que consome a API do [TMDB (The Movie Database)](https://www.themoviedb.org/) para exibir filmes populares, permitir buscas por título e apresentar informações detalhadas sobre cada filme.
 
-Projeto desenvolvido como desafio técnico para vaga de desenvolvedor front-end.
+O projeto foi desenvolvido como **desafio técnico para uma vaga de Desenvolvedor Front-end**, com foco em organização de código, boas práticas, experiência do usuário e utilização de recursos modernos do Angular.
+
+---
 
 ## 🚀 Tecnologias
 
-- Angular 18 (standalone components)
-- TypeScript
-- RxJS (Observables, debounceTime, distinctUntilChanged)
-- Jasmine + Karma (testes unitários)
-- API TMDB (The Movie Database)
+- **Angular 18** — Standalone Components
+- **TypeScript**
+- **RxJS** — `debounceTime` e `distinctUntilChanged`
+- **Jasmine + Karma** — Testes unitários
+- **TMDB API** — The Movie Database
+- **HTML5**
+- **CSS3**
+
+---
 
 ## 📋 Funcionalidades
 
-- Listagem de filmes populares
-- Busca por título com debounce (evita chamadas excessivas à API)
-- Tratamento de estados de **loading**, **erro** e **vazio**
-- Tela de detalhe com sinopse, gêneros, duração e elenco principal
-- Layout responsivo (desktop e mobile)
-- Componente reutilizável (`MovieCardComponent`)
+- 🎬 Listagem de filmes populares
+- 🔎 Busca de filmes por título
+- ⚡ Debounce na busca para evitar requisições excessivas à API
+- ⏳ Tratamento de estado de carregamento (*loading*)
+- ❌ Tratamento de erros
+- 📭 Tratamento de estado vazio quando nenhum resultado é encontrado
+- 📖 Página de detalhes do filme
+- 📝 Exibição de sinopse
+- 🎭 Exibição do elenco principal
+- 🏷️ Exibição dos gêneros
+- ⏱️ Exibição da duração do filme
+- ⭐ Exibição da avaliação
+- 📱 Layout responsivo para desktop e dispositivos móveis
+- 🧩 Componente reutilizável `MovieCardComponent`
 
-## 🗂️ Estrutura de pastas
+---
 
+## 🗂️ Estrutura do Projeto
 
-src/app/
-  core/
-    services/
-      movie.service.ts       -> chamadas a API TMDB
-  shared/
-    components/
-      movie-card/            -> componente reutilizavel
-  features/
-    home/                    -> listagem + busca
-    movie-detail/            -> tela de detalhe
-  models/
-    movie.model.ts           -> tipagem dos dados da API
+A aplicação utiliza uma arquitetura organizada por responsabilidades e funcionalidades:
 
-
+```text
+src/
+└── app/
+    ├── core/
+    │   └── services/
+    │       └── movie.service.ts
+    │
+    ├── shared/
+    │   └── components/
+    │       └── movie-card/
+    │           └── movie-card.component.ts
+    │
+    ├── features/
+    │   ├── home/
+    │   │   └── ...
+    │   │
+    │   └── movie-detail/
+    │       └── ...
+    │
+    └── models/
+        └── movie.model.ts
+```
 ## ⚙️ Como rodar o projeto localmente
 
 ### 1. Clone o repositório
 
-bash
 git clone https://github.com/GuiSantosMacedo1/catalogo-filmes.git
 cd catalogo-filmes
 
 
 ### 2. Instale as dependências
 
-bash
 npm install
 
 
@@ -59,7 +82,7 @@ Crie uma conta gratuita em [themoviedb.org](https://www.themoviedb.org/) e gere 
 
 Copie o arquivo de exemplo:
 
-bash
+ 
 cp src/environments/environment.example.ts src/environments/environment.development.ts
 
 
@@ -74,14 +97,14 @@ export const environment = {
 };
 
 ### 4. Rode o projeto
-bash
+ 
 ng serve
 
 Acesse `http://localhost:4200`.
 
 ### 5. Rodando os testes
 
-bash
+ 
 ng test
 
 ## 🔒 Nota sobre segurança
@@ -97,4 +120,4 @@ A API Key do TMDB (v3) é projetada para uso client-side, mas mesmo assim os arq
 
 ## 👤 Autor
 
-Guilherme Santos Macedo — [LinkedIn](#) | [GitHub](https://github.com/GuiSantosMacedo1)
+Guilherme Santos Macedo — [LinkedIn](https://www.linkedin.com/in/guilherme-santos-macedo/) | [GitHub](https://github.com/GuiSantosMacedo1)
