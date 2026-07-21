@@ -1,0 +1,7 @@
+{
+  "buildCommand": "bash scripts/generate-env.sh && npm run build",
+  "outputDirectory": "dist/catalogo-filmes/browser",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
