@@ -1,17 +1,14 @@
 <div class="detail-container">
   <button class="back-button" (click)="goBack()">← Voltar</button>
 
-  <!-- Loading -->
   <div class="state-message" *ngIf="loading">
     <p>Carregando detalhes...</p>
   </div>
 
-  <!-- Erro -->
   <div class="state-message state-error" *ngIf="error && !loading">
     <p>Não foi possível carregar este filme. Tente novamente mais tarde.</p>
   </div>
 
-  <!-- Conteúdo -->
   <div class="movie-detail" *ngIf="movie && !loading && !error">
     <div class="detail-poster">
       <img [src]="posterUrl" [alt]="movie.title" />
