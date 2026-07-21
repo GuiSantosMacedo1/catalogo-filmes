@@ -23,18 +23,20 @@ Projeto desenvolvido como desafio técnico para vaga de desenvolvedor front-end.
 
 ## 🗂️ Estrutura de pastas
 
+
 src/app/
-├── core/
-│   └── services/
-│       └── movie.service.ts       → chamadas à API TMDB
-├── shared/
-│   └── components/
-│       └── movie-card/            → componente reutilizável
-├── features/
-│   ├── home/                      → listagem + busca
-│   └── movie-detail/              → tela de detalhe
-└── models/
-    └── movie.model.ts             → tipagem dos dados da API
+  core/
+    services/
+      movie.service.ts       -> chamadas a API TMDB
+  shared/
+    components/
+      movie-card/            -> componente reutilizavel
+  features/
+    home/                    -> listagem + busca
+    movie-detail/            -> tela de detalhe
+  models/
+    movie.model.ts           -> tipagem dos dados da API
+
 
 ## ⚙️ Como rodar o projeto localmente
 
@@ -63,28 +65,24 @@ cp src/environments/environment.example.ts src/environments/environment.developm
 
 Edite o arquivo `environment.development.ts` e insira sua chave:
 
-\```typescript
+typescript
 export const environment = {
   production: false,
   tmdbApiKey: 'SUA_CHAVE_AQUI',
   tmdbBaseUrl: 'https://api.themoviedb.org/3',
   tmdbImageUrl: 'https://image.tmdb.org/t/p/w500'
 };
-\```
 
 ### 4. Rode o projeto
-
-\```bash
+bash
 ng serve
-\```
 
 Acesse `http://localhost:4200`.
 
 ### 5. Rodando os testes
 
-\```bash
+bash
 ng test
-\```
 
 ## 🔒 Nota sobre segurança
 
