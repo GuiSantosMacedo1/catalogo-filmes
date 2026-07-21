@@ -1,0 +1,12 @@
+<div class="movie-card" (click)="onClick()">
+  <div class="poster-wrapper">
+    <img [src]="posterUrl" [alt]="movie.title" class="poster" loading="lazy" />
+    <span class="rating-badge">★ {{ formattedRating }}</span>
+  </div>
+  <div class="movie-info">
+    <h3 class="movie-title">{{ movie.title }}</h3>
+    <span class="movie-year" *ngIf="movie.release_date">
+      {{ movie.release_date | slice:0:4 }}
+    </span>
+  </div>
+</div>
