@@ -1,0 +1,36 @@
+<div class="home-container">
+  <header class="home-header">
+    <h1>Catálogo de Filmes</h1>
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Buscar filme por título..."
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchChange($event)"
+    />
+  </header>
+
+  <!-- Loading -->
+  <div class="state-message" *ngIf="loading">
+    <p>Carregando filmes...</p>
+  </div>
+
+  <!-- Erro -->
+  <div class="state-message state-error" *ngIf="error && !loading">
+    <p>Não foi possível carregar os filmes. Tente novamente mais tarde.</p>
+  </div>
+
+  <!-- Vazio -->
+  <div class="state-message" *ngIf="!loading && !error && movies.length === 0">
+    <p>Nenhum filme encontrado para "{{ searchTerm }}".</p>
+  </div>
+
+  <!-- Lista de filmes -->
+  <div class="movie-grid" *ngIf="!loading && !error && movies.length > 0">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      (cardClick)="goToDetail(movie.id)"
+    ></app-movie-card>
+  </div>
+</div>
